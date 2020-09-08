@@ -1,2 +1,1 @@
 http://www.meteo.nc/nouvelle-caledonie/observations/dernieres-24h
-http://www.meteo.nc/nouvelle-caledonie/previsions/meteo-local
