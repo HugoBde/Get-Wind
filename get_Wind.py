@@ -12,7 +12,7 @@ def getHtml(webUrl):
     htmlContent = requests.get(webUrl)
     #clearLastLine()
     if htmlContent.status_code == 200:
-        print("URL reached successfully. \n")
+        print("URL reached successfully.")
         return htmlContent.text
     else:
         print('Error '+ str(htmlContent.status_code) +' ' + htmlContent.reason)
@@ -25,7 +25,7 @@ def saveHtml(webUrl, webPage):
         myPage.write(webPage)
     sleep(2)
     #clearLastLine()
-    print('Page Saved.\n')
+    print('Page Saved.')
 
 urlList = open('url_List.txt' , 'r')
 for url in urlList:
