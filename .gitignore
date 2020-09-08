@@ -74,8 +74,6 @@ docs/_build/
 # PyBuilder
 target/
 
-Saved Pages/
-
 # Jupyter Notebook
 .ipynb_checkpoints
 
@@ -129,3 +127,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+'Saved Pages/'
