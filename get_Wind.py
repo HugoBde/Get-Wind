@@ -1,5 +1,6 @@
 import requests
 import sys
+import os
 from time import sleep
 #from bs4 import BeautifulSoup
 
@@ -23,10 +24,12 @@ def saveHtml(webUrl, webPage):
     print('Saving web page ...')
     with open('Saved Pages/'+webUrl.split('/')[-1]+'.html', 'w') as myPage:
         myPage.write(webPage)
-    sleep(2)
     #clearLastLine()
     print('Page Saved.')
 
+
+if not os.path.exists('Saved Pages/'):
+    os.mkdir('Saved Pages/')
 urlList = open('url_List.txt' , 'r')
 for url in urlList:
     url = url.replace("\n","")
