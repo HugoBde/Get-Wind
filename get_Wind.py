@@ -63,6 +63,6 @@ for htmlFile in os.listdir():
             timeRcd = fetchData(mySoup,'span','resp')
             windSpeeds = fetchData(mySoup,'td','obs')
             displayData(timeRcd , windSpeeds)
-        #os.remove(htmlFile)
+        os.remove(htmlFile)
 
 input('Continue ...')
