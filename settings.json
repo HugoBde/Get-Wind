@@ -1,0 +1,16 @@
+{
+    "Meteo NC - Dernieres 24h": {
+        
+        "url": "http://www.meteo.nc/nouvelle-caledonie/observations/dernieres-24h"
+        ,
+        "time": {
+                "tag": "span",
+                "class": "resp"
+            }
+        ,
+        "windSpeed": {
+                "tag": "td",
+                "class": "obs"
+            }
+        }
+}

@@ -1,8 +1,17 @@
 import requests                 #Importing all necessary libraries
 import os
+import json
 from time import sleep
 from bs4 import BeautifulSoup
 
+def getSettings (settingsFile):
+    urls = []
+    timeSettings = []
+    windSpeedSetings = []
+    for webSite in json.load(settingsFile):
+        urls.append(website['url'])
+        timeSettings.append(webSite['time'])
+        windSpeedSetings.append()
 
 def getHtml(webUrl):            #Download the html code of a page hosted at webUrl
     htmlContent = requests.get(webUrl)
@@ -46,23 +55,21 @@ def displayData(times, speeds):                 #Display fetched data into a mor
             print(speeds[i] + '\t' + speeds[i+1])
 
 
+with open('settings.json' , 'r') as settingsFile:
+    settings = json.load(settingsFile)
 
-
-with open('url_List.txt' , 'r') as urlList:
-    for url in urlList:
-        url = url.replace("\n","")
-        saveHtml(url)
-print('Content Downloaded.')
-
-
-
-for htmlFile in os.listdir():
-    if htmlFile.split('.')[-1] == 'html':
-        with open(htmlFile) as myFile:
-            mySoup = BeautifulSoup(myFile, 'lxml')
-            timeRcd = fetchData(mySoup,'span','resp')
-            windSpeeds = fetchData(mySoup,'td','obs')
-            displayData(timeRcd , windSpeeds)
-        os.remove(htmlFile)
+for webPage in settings:
+    url = webPage['url']
+    timeSettings = ['time']
+    windSpeedSettings = ['windSpeed']
+    saveHtml(url)
+    for htmlFile in os.listdir():
+        if htmlFile.split('.')[-1] == 'html':
+            with open(htmlFile) as myFile:
+                mySoup = BeautifulSoup(myFile , 'lxml')
+                timeData = fetchData(mySoup , timeSettings['tag'] , timeSettings['class'])
+                windData = fetchData(mySoup , windSpeedSettings['tag'] , windSpeedSettings['class'])
+                displayData(timeData , windData)
+            os.remove(htmlFile)
 
 input('Continue ...')
