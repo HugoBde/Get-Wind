@@ -71,5 +71,3 @@ for webPage in settings:
                 windData = fetchData(mySoup , windSpeedSettings['tag'] , windSpeedSettings['class'])
                 displayData(timeData , windData)
             os.remove(htmlFile)
-
-input('Continue ...')
