@@ -9,7 +9,7 @@ def getSettings (settingsFile):
     timeSettings = []
     windSpeedSetings = []
     for webSite in json.load(settingsFile):
-        urls.append(website['url'])
+        urls.append(webSite['url'])
         timeSettings.append(webSite['time'])
         windSpeedSetings.append()
 
@@ -60,8 +60,8 @@ with open('settings.json' , 'r') as settingsFile:
 
 for webPage in settings:
     url = webPage['url']
-    timeSettings = ['time']
-    windSpeedSettings = ['windSpeed']
+    timeSettings = webPage['time']
+    windSpeedSettings = webPage['wind']
     saveHtml(url)
     for htmlFile in os.listdir():
         if htmlFile.split('.')[-1] == 'html':
